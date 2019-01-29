@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol JSONDecodable: Decodable {
+public protocol JSONDecodable: Decodable {
     static func decodeObject<T: Decodable>(withData data:Data?) -> T?
 }
 
-extension JSONDecodable {
+public extension JSONDecodable {
     static func decodeObject<T: Decodable>(withData data:Data?) -> T? {
 
         guard let data = data else {
@@ -28,11 +28,11 @@ extension JSONDecodable {
     }
 }
 
-protocol JSONEncodable: Encodable {
+public protocol JSONEncodable: Encodable {
     static func encodeObject<T: Encodable>(_ value:T?) -> Data?
 }
 
-extension JSONEncodable {
+public extension JSONEncodable {
     static func encodeObject<T: Encodable>(_ value:T?) -> Data? {
 
         guard let value = value else {
@@ -48,4 +48,4 @@ extension JSONEncodable {
     }
 }
 
-protocol JSONCodable: JSONDecodable, JSONEncodable {}
+public protocol JSONCodable: JSONDecodable, JSONEncodable {}
